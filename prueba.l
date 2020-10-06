@@ -22,58 +22,58 @@ err \=\?|{id_inv}
   #include <stdio.h>
   #include <string.h>
   #include <stdbool.h>
-  void process();
-  void upper_string();
-  void process_keyword();
-  void insert_id();
+  #include <ctype.h> 
+  void convert_to_upper();
+  void print_tokens();
+  void show_lines();
+  void identifier();
   void show_ids();
-  int cont_id=0;
-  int n=0;
-  int cont_err = 0;
+  int num_ids=0; int x=0;
+  int num_errores = 0;
   char ids[9999][9999];
   char buffer[100];
 %}
 
 %%
 
-{tokens}	{process_keyword(yytext);}
-"+"               {process("Op-sum", yytext);}
-"-"               {process("Op-sust", yytext);}
-"*"               {process("Op-mult", yytext);}
-"/"               {process("Op-div", yytext);}
-"%"               {process("Op-mod", yytext);}
-"&&"               {process("Op-y", yytext);}
-"="			      {process("Op-asig", yytext);}
-"||"               {process("Op-o", yytext);}
-">"				  {process("Op-Mayor", yytext);}
-"<"		          {process("Op-Menor", yytext);}
-"<="	          {process("Op-Menor-igual", yytext);}
-">="		      {process("Op-Mayor-igual", yytext);}
-"<>"               {process("Op-Diferente", yytext);}
-"!="	       	  {process("Op-Diferente", yytext);}
-"=="			  {process("Op-Igual", yytext);}
-"("			      {process("Parent-a", yytext);}
-")"			      {process("Parent-c", yytext);}
-";"			      {process("Punto-coma", yytext);}
-"["			      {process("Corchete-a", yytext);}
-"]"			      {process("Corchete-c", yytext);}
-"*="              {process("Op-PorAsig", yytext);}
-"/="			  {process("Op-DivAsig", yytext);}
-"-="              {process("Op-SustAsig", yytext);}
-"+="              {process("Op-MasAsig", yytext);}
-"++"              {process("Op-MasMas", yytext);}
-"--"              {process("Op-SustSust", yytext);}
-"{"               {process("Llave-a", yytext);}
-"}"               {process("Llave-c", yytext);}
-"!"               {process("Op-no", yytext);}
+{tokens}	      {print_tokens(yytext);}
+"+"               {show_lines("Op-sum", yytext);}
+"-"               {show_lines("Op-sust", yytext);}
+"*"               {show_lines("Op-mult", yytext);}
+"/"               {show_lines("Op-div", yytext);}
+"%"               {show_lines("Op-mod", yytext);}
+"&&"               {show_lines("Op-y", yytext);}
+"="			      {show_lines("Op-asig", yytext);}
+"||"               {show_lines("Op-o", yytext);}
+">"				  {show_lines("Op-Mayor", yytext);}
+"<"		          {show_lines("Op-Menor", yytext);}
+"<="	          {show_lines("Op-Menor-igual", yytext);}
+">="		      {show_lines("Op-Mayor-igual", yytext);}
+"<>"               {show_lines("Op-Diferente", yytext);}
+"!="	       	  {show_lines("Op-Diferente", yytext);}
+"=="			  {show_lines("Op-Igual", yytext);}
+"("			      {show_lines("Parent-a", yytext);}
+")"			      {show_lines("Parent-c", yytext);}
+";"			      {show_lines("Punto-coma", yytext);}
+"["			      {show_lines("Corchete-a", yytext);}
+"]"			      {show_lines("Corchete-c", yytext);}
+"*="              {show_lines("Op-PorAsig", yytext);}
+"/="			  {show_lines("Op-DivAsig", yytext);}
+"-="              {show_lines("Op-SustAsig", yytext);}
+"+="              {show_lines("Op-MasAsig", yytext);}
+"++"              {show_lines("Op-MasMas", yytext);}
+"--"              {show_lines("Op-SustSust", yytext);}
+"{"               {show_lines("Llave-a", yytext);}
+"}"               {show_lines("Llave-c", yytext);}
+"!"               {show_lines("Op-no", yytext);}
 
-{id}	{insert_id(yytext);}
-{nent}	{process("Cte-ent", yytext);}
-{ndec}	{process("Cte-real", yytext);}
-{nlong}	{process("Cte-long", yytext);}
-{str}	{process("Cte-cadena", yytext);}
-{comment}         {process("COMENTARIO", yytext);}
-{err}         {process("ERROR", yytext);cont_err++;}
+{id}	{identifier(yytext);}
+{nent}	{show_lines("Cte-ent", yytext);}
+{ndec}	{show_lines("Cte-real", yytext);}
+{nlong}	{show_lines("Cte-long", yytext);}
+{str}	{show_lines("Cte-cadena", yytext);}
+{comment}         {show_lines("COMENTARIO", yytext);}
+{err}         {show_lines("ERROR", yytext);num_errores++;}
 
 
 %%
@@ -88,41 +88,49 @@ int main(int argc, char *argv[])
     fprintf(yyout, "\n");
     show_ids();
     fprintf(yyout, "\n");
-    fprintf(yyout, "Se encontraron %d errores\n", cont_err);
+    fprintf(yyout, "Se encontraron %d errores\n", num_errores);
     return 0;
 }
 
-void process_keyword(char keyword[]) {
-  upper_string(keyword);
+void print_tokens(char keyword[]) {
+
+  convert_to_upper(keyword);
   fprintf(yyout, "%s ", keyword);
 }
 
-void insert_id(char text[]) {
+void identifier(char text[]) {
   bool new_id = true;
-	for(int i = 0; i < cont_id; i++){
+	for(int i = 0; i < num_ids; i++){
 		if(strcmp(text, ids[i]) == 0) {
 			new_id = false;
-            n = i;
+            x = i;
 		}
 	}
   if (new_id){
-    strcpy(ids[cont_id], text);
-    n = cont_id;
-    cont_id++;
+    strcpy(ids[num_ids], text);
+    x = num_ids;
+    num_ids++;
   }
-  sprintf(buffer, "Id", n);
-  process(buffer,text);
+  sprintf(buffer, "Id", x);
+  show_lines(buffer,text);
 }
 
-void process(char rule_name[], char value[]) {
-
-  if(rule_name!="COMENTARIO"){
-    printf(rule_name[0]);
-    fprintf(yyout, " %s= %s ", rule_name, yytext);
+void show_lines(char type[], char value[]) {
+  char c = 'I';
+  char d = 'd';
+  if(type!="COMENTARIO"){
+      if(type[0] == c && type[1]==d || type=="STRING"){
+          fprintf(yyout, " %s=%s , ", type, yytext);
+      } else if (type=="Punto-coma" || type=="Llave-c"){
+          fprintf(yyout, " %s=%s ", type, yytext);
+      } else  {
+          fprintf(yyout, " %s=%s , ", type, yytext);
+      }
+  
   }
 }
 
-void upper_string(char s[]) {
+void convert_to_upper(char s[]) {
    int c = 0;
    while (s[c] != '\0') {
       if (s[c] >= 'a' && s[c] <= 'z') {
@@ -133,14 +141,14 @@ void upper_string(char s[]) {
 }
 
 void show_ids() {
-  if(cont_id == 0) {
+  if(num_ids == 0) {
     fprintf(yyout, "No se detectaron identificadores\n");
   }
   else {
-    fprintf(yyout, "Hay %d identificadores:\n", cont_id);
-    for(int i = 0; i < cont_id; i++) {
-      fprintf(yyout, "Id%d=%s; ", i, ids[i]);
+    fprintf(yyout, "Hay %d identificadores:\n", num_ids);
+    for(int i = 0; i < num_ids; i++) {
+      fprintf(yyout, "Id=%s; ", ids[i]);
     }
-    fprintf(yyout, "\n");
+     fprintf(yyout, "\n");
 	}
 }

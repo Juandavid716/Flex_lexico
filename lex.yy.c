@@ -446,14 +446,14 @@ char *yytext;
   #include <stdio.h>
   #include <string.h>
   #include <stdbool.h>
-  void process();
-  void upper_string();
-  void process_keyword();
-  void insert_id();
+  #include <ctype.h> 
+  void convert_to_upper();
+  void print_tokens();
+  void show_lines();
+  void identifier();
   void show_ids();
-  int cont_id=0;
-  int n=0;
-  int cont_err = 0;
+  int num_ids=0; int x=0;
+  int num_errores = 0;
   char ids[9999][9999];
   char buffer[100];
 #line 460 "lex.yy.c"
@@ -696,187 +696,187 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 39 "prueba.l"
-{process_keyword(yytext);}
+{print_tokens(yytext);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 40 "prueba.l"
-{process("Op-sum", yytext);}
+{show_lines("Op-sum", yytext);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 41 "prueba.l"
-{process("Op-sust", yytext);}
+{show_lines("Op-sust", yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 42 "prueba.l"
-{process("Op-mult", yytext);}
+{show_lines("Op-mult", yytext);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 43 "prueba.l"
-{process("Op-div", yytext);}
+{show_lines("Op-div", yytext);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 44 "prueba.l"
-{process("Op-mod", yytext);}
+{show_lines("Op-mod", yytext);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 45 "prueba.l"
-{process("Op-y", yytext);}
+{show_lines("Op-y", yytext);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 46 "prueba.l"
-{process("Op-asig", yytext);}
+{show_lines("Op-asig", yytext);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 47 "prueba.l"
-{process("Op-o", yytext);}
+{show_lines("Op-o", yytext);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 48 "prueba.l"
-{process("Op-Mayor", yytext);}
+{show_lines("Op-Mayor", yytext);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 49 "prueba.l"
-{process("Op-Menor", yytext);}
+{show_lines("Op-Menor", yytext);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 50 "prueba.l"
-{process("Op-Menor-igual", yytext);}
+{show_lines("Op-Menor-igual", yytext);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 51 "prueba.l"
-{process("Op-Mayor-igual", yytext);}
+{show_lines("Op-Mayor-igual", yytext);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 52 "prueba.l"
-{process("Op-Diferente", yytext);}
+{show_lines("Op-Diferente", yytext);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 53 "prueba.l"
-{process("Op-Diferente", yytext);}
+{show_lines("Op-Diferente", yytext);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 54 "prueba.l"
-{process("Op-Igual", yytext);}
+{show_lines("Op-Igual", yytext);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 55 "prueba.l"
-{process("Parent-a", yytext);}
+{show_lines("Parent-a", yytext);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 56 "prueba.l"
-{process("Parent-c", yytext);}
+{show_lines("Parent-c", yytext);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 57 "prueba.l"
-{process("Punto-coma", yytext);}
+{show_lines("Punto-coma", yytext);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 58 "prueba.l"
-{process("Corchete-a", yytext);}
+{show_lines("Corchete-a", yytext);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 59 "prueba.l"
-{process("Corchete-c", yytext);}
+{show_lines("Corchete-c", yytext);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 60 "prueba.l"
-{process("Op-PorAsig", yytext);}
+{show_lines("Op-PorAsig", yytext);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 61 "prueba.l"
-{process("Op-DivAsig", yytext);}
+{show_lines("Op-DivAsig", yytext);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 62 "prueba.l"
-{process("Op-SustAsig", yytext);}
+{show_lines("Op-SustAsig", yytext);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 63 "prueba.l"
-{process("Op-MasAsig", yytext);}
+{show_lines("Op-MasAsig", yytext);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 64 "prueba.l"
-{process("Op-MasMas", yytext);}
+{show_lines("Op-MasMas", yytext);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 65 "prueba.l"
-{process("Op-SustSust", yytext);}
+{show_lines("Op-SustSust", yytext);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 66 "prueba.l"
-{process("Llave-a", yytext);}
+{show_lines("Llave-a", yytext);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 67 "prueba.l"
-{process("Llave-c", yytext);}
+{show_lines("Llave-c", yytext);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 68 "prueba.l"
-{process("Op-no", yytext);}
+{show_lines("Op-no", yytext);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 70 "prueba.l"
-{insert_id(yytext);}
+{identifier(yytext);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 71 "prueba.l"
-{process("Cte-ent", yytext);}
+{show_lines("Cte-ent", yytext);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 72 "prueba.l"
-{process("Cte-real", yytext);}
+{show_lines("Cte-real", yytext);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 73 "prueba.l"
-{process("Cte-long", yytext);}
+{show_lines("Cte-long", yytext);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
 #line 74 "prueba.l"
-{process("Cte-cadena", yytext);}
+{show_lines("Cte-cadena", yytext);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 75 "prueba.l"
-{process("COMENTARIO", yytext);}
+{show_lines("COMENTARIO", yytext);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 76 "prueba.l"
-{process("ERROR", yytext);cont_err++;}
+{show_lines("ERROR", yytext);num_errores++;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
@@ -1782,41 +1782,49 @@ int main(int argc, char *argv[])
     fprintf(yyout, "\n");
     show_ids();
     fprintf(yyout, "\n");
-    fprintf(yyout, "Se encontraron %d errores\n", cont_err);
+    fprintf(yyout, "Se encontraron %d errores\n", num_errores);
     return 0;
 }
 
-void process_keyword(char keyword[]) {
-  upper_string(keyword);
+void print_tokens(char keyword[]) {
+
+  convert_to_upper(keyword);
   fprintf(yyout, "%s ", keyword);
 }
 
-void insert_id(char text[]) {
+void identifier(char text[]) {
   bool new_id = true;
-	for(int i = 0; i < cont_id; i++){
+	for(int i = 0; i < num_ids; i++){
 		if(strcmp(text, ids[i]) == 0) {
 			new_id = false;
-            n = i;
+            x = i;
 		}
 	}
   if (new_id){
-    strcpy(ids[cont_id], text);
-    n = cont_id;
-    cont_id++;
+    strcpy(ids[num_ids], text);
+    x = num_ids;
+    num_ids++;
   }
-  sprintf(buffer, "Id", n);
-  process(buffer,text);
+  sprintf(buffer, "Id", x);
+  show_lines(buffer,text);
 }
 
-void process(char rule_name[], char value[]) {
-
-  if(rule_name!="COMENTARIO"){
-    printf(rule_name[0]);
-    fprintf(yyout, " %s= %s ", rule_name, yytext);
+void show_lines(char type[], char value[]) {
+  char c = 'I';
+  char d = 'd';
+  if(type!="COMENTARIO"){
+      if(type[0] == c && type[1]==d || type=="STRING"){
+          fprintf(yyout, " %s=%s , ", type, yytext);
+      } else if (type=="Punto-coma" || type=="Llave-c"){
+          fprintf(yyout, " %s=%s ", type, yytext);
+      } else  {
+          fprintf(yyout, " %s=%s , ", type, yytext);
+      }
+  
   }
 }
 
-void upper_string(char s[]) {
+void convert_to_upper(char s[]) {
    int c = 0;
    while (s[c] != '\0') {
       if (s[c] >= 'a' && s[c] <= 'z') {
@@ -1827,14 +1835,14 @@ void upper_string(char s[]) {
 }
 
 void show_ids() {
-  if(cont_id == 0) {
+  if(num_ids == 0) {
     fprintf(yyout, "No se detectaron identificadores\n");
   }
   else {
-    fprintf(yyout, "Hay %d identificadores:\n", cont_id);
-    for(int i = 0; i < cont_id; i++) {
-      fprintf(yyout, "Id%d=%s; ", i, ids[i]);
+    fprintf(yyout, "Hay %d identificadores:\n", num_ids);
+    for(int i = 0; i < num_ids; i++) {
+      fprintf(yyout, "Id=%s; ", ids[i]);
     }
-    fprintf(yyout, "\n");
+     fprintf(yyout, "\n");
 	}
 }

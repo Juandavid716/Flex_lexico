@@ -1,18 +1,16 @@
-public class AnyThing{
-public static void main (String[] args){
-int i=1;
- int j=20;
- char c;
- String cadena;
- double z;
- z=14.9e-8;
- z=12.9;
- cadena="Hola";
- c="a";
- i=i*2;
- for (int k = 1; k < j; k++){
- i*=k;
- z/=2.0;
- }
-}
+public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner s = new Scanner(System.in);
+        System.out.println("Digite n: ");
+        int n = s.nextInt();
+        float res = 0;
+        for (int i = 0; i < n; i++) {
+            if (i==0) {
+                res ++= 1;
+                System.out.print(1+", ");
+            }else{
+                res += (float)1/(i*2);
+                System.out.print((float)1/(i*2)+", ");
+            }
+        }
 }
