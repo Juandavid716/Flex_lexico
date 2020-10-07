@@ -1,27 +1,23 @@
-
-PUBLIC  STATIC  VOID   Id=main ,  Parent-a=( , STRING  Corchete-a=[ ,  Corchete-c=] ,   Id=args ,  Parent-c=) ,   Llave-a={ , 
-        
-         Id=Scanner ,   Id=s ,   Op-asig== ,  NEW   Id=Scanner ,  Parent-a=( ,  Id=System ,  Cte-real=. ,  Id=in ,  Parent-c=) ,  Punto-coma=; 
-         Id=System ,  Cte-real=. ,  Id=out ,  Cte-real=. ,  Id=println ,  Parent-a=( ,  Cte-cadena="Digite n: " ,  Parent-c=) ,  Punto-coma=; 
-        INT   Id=n ,   Op-asig== ,   Id=s ,  Cte-real=. ,  Id=nextInt ,  Parent-a=( ,  Parent-c=) ,  Punto-coma=; 
-         Id=float ,   Id=res ,   Op-asig== ,   Cte-ent=0 ,  Punto-coma=; 
-        FOR   Parent-a=( , INT   Id=i ,   Op-asig== ,   Cte-ent=0 ,  Punto-coma=;   Id=i ,   Op-Menor=< ,   Id=n ,  Punto-coma=;   Id=i ,  Op-MasMas=++ ,  Parent-c=) ,   Llave-a={ , 
-            IF   Parent-a=( ,  Id=i ,  Op-Igual=== ,  Cte-ent=0 ,  Parent-c=) ,   Llave-a={ , 
-                 Id=res ,   Op-MasMas=++ ,  Op-asig== ,   Cte-ent=1 ,  Punto-coma=; 
-                 Id=System ,  Cte-real=. ,  Id=out ,  Cte-real=. ,  Id=print ,  Parent-a=( ,  Cte-ent=1 ,  Op-sum=+ ,  Cte-cadena=", " ,  Parent-c=) ,  Punto-coma=; 
-             Llave-c=} ELSE  Llave-a={ , 
-                 Id=res ,   Op-MasAsig=+= ,   Parent-a=( ,  Id=float ,  Parent-c=) ,  Cte-ent=1 ,  Op-div=/ ,  Parent-a=( ,  Id=i ,  Op-mult=* ,  Cte-ent=2 ,  Parent-c=) ,  Punto-coma=; 
-                 Id=disc ,   Op-asig== ,   Cte-ent=4 ,  Id=a ,  Op-mult=* ,  Id=c , 
-                 Id=System ,  Cte-real=. ,  Id=out ,  Cte-real=. ,  Id=print ,  Parent-a=( ,  Parent-a=( ,  Id=float ,  Parent-c=) ,  Cte-ent=1 ,  Op-div=/ ,  Parent-a=( ,  Id=i ,  Op-mult=* ,  Cte-ent=2 ,  Parent-c=) ,  Op-sum=+ ,  Cte-cadena=", " ,  Parent-c=) ,  Punto-coma=; 
-             Llave-c=} 
-             Id=dfkjdfgkj ,   ERROR=: ,  ERROR=: , 
-             ERROR=@ , 
-             Op-div=/ , 
-             Op-y=&& ,  Op-y=&& ,  ERROR=& , 
+PUBLIC  CLASS   Id=AnyThing ,  Llave-a={ , 
+    PUBLIC  STATIC  VOID   Id=main ,   Parent-a=( , STRING  Corchete-a=[ ,  Corchete-c=] ,   Id=args ,  Parent-c=) ,  Llave-a={ , 
+    INT   Id=i ,  Op-asig== ,  Cte-ent=1 ,  Punto-coma=; 
+    INT   Id=j ,  Op-asig== ,  Cte-ent=20 ,  Punto-coma=; 
+    CHAR   Id=c ,  Punto-coma=; 
+    STRING   Id=cadena ,  Punto-coma=; 
+    DOUBLE   Id=z ,  Punto-coma=; 
+     Id=z ,  Op-asig== ,  Cte-real=14.9e-8 ,  Punto-coma=; 
+     Id=z ,  Op-asig== ,  Cte-real=12.9 ,  Punto-coma=; 
+     Id=cadena ,  Op-asig== ,  Cte-cadena="Hola" ,  Punto-coma=; 
+     Id=c ,  Op-asig== ,  Cte-cadena="a" ,  Punto-coma=; 
+     Id=i ,  Op-asig== ,  Id=i ,  Op-mult=* ,  Cte-ent=2 ,  Punto-coma=; 
+        FOR   Parent-a=( , INT   Id=k ,   Op-asig== ,   Cte-ent=1 ,  Punto-coma=;   Id=k ,   Op-Menor=< ,   Id=j ,  Punto-coma=;   Id=k ,  Op-MasMas=++ ,  Parent-c=) ,  Llave-a={ , 
+         Id=i ,  Op-PorAsig=*= ,  ERROR=3k ,  Punto-coma=; 
+         Id=z ,  Op-DivAsig=/= ,  Cte-real=2.0 ,  Punto-coma=; 
          Llave-c=} 
+     Llave-c=} 
  Llave-c=} 
-       
-Hay 18 identificadores:
-Id=main; Id=args; Id=Scanner; Id=s; Id=System; Id=in; Id=out; Id=println; Id=n; Id=nextInt; Id=float; Id=res; Id=i; Id=print; Id=disc; Id=a; Id=c; Id=dfkjdfgkj; 
 
-Se encontraron 4 errores
+Hay 9 identificadores:
+Id=AnyThing; Id=main; Id=args; Id=i; Id=j; Id=c; Id=cadena; Id=z; Id=k; 
+
+Se encontraron 1 errores

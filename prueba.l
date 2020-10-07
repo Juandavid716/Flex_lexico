@@ -5,9 +5,9 @@ letra	[A-Za-z]
 dig	[0-9]
 digs	{dig}+
 id	({letra}({letra}|{dig})*)
+enum ({digs}({letra})+)
 sig	("-")
 nent	{sig}?{digs}
-id_inv ({dig}|"_")({letra}|{dig}|"_")*
 pent	{digs}?
 pdec	("."({digs}?))?
 pexp	("e"(({sig})?){digs})?
@@ -15,7 +15,7 @@ ndec	{pent}{pdec}{pexp}
 nlong	{digs}("L"|"l")
 str	    (("'")([^']*)("'"))|(("\"")([^"]*)("\""))
 comment "//".*
-err [[:punct:]]
+err {enum}
 
 %{   
 /* importación de librerias , metodos y variables globales*/
@@ -93,7 +93,6 @@ int main(int argc, char *argv[])
 }
 
 void print_tokens(char keyword[]) {
-
   convert_to_upper(keyword);
   fprintf(yyout, "%s ", keyword);
 }
@@ -116,8 +115,7 @@ void identifier(char text[]) {
 }
 
 void show_lines(char type[], char value[]) {
-  char c = 'I';
-  char d = 'd';
+  char c = 'I'; char d = 'd';
   if(type!="COMENTARIO"){
       if(type[0] == c && type[1]==d || type=="STRING"){
           fprintf(yyout, " %s=%s , ", type, yytext);
