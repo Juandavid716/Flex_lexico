@@ -15,7 +15,7 @@ ndec	{pent}{pdec}{pexp}
 nlong	{digs}("L"|"l")
 str	    (("'")([^']*)("'"))|(("\"")([^"]*)("\""))
 comment "//".*
-err \=\?|{id_inv}
+err [[:punct:]]
 
 %{   
 /* importación de librerias , metodos y variables globales*/

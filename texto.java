@@ -1,3 +1,4 @@
+
 public static void main(String[] args) {
         // TODO code application logic here
         Scanner s = new Scanner(System.in);
@@ -10,7 +11,10 @@ public static void main(String[] args) {
                 System.out.print(1+", ");
             }else{
                 res += (float)1/(i*2);
+                disc = 4a*c
                 System.out.print((float)1/(i*2)+", ");
             }
+         
         }
 }
+       
