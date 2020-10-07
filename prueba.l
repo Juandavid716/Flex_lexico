@@ -4,18 +4,22 @@ tokens	if|else|for|while|double|int|String|new|public|class|static|void|char
 letra	[A-Za-z]
 dig	[0-9]
 digs	{dig}+
-id	({letra}({letra}|{dig})*)
+variable 	({letra}({letra}|{dig})*)
+id {variable}
 enum ({digs}({letra})+)
 sig	("-")
 nent	{sig}?{digs}
 pent	{digs}?
 pdec	("."({digs}?))?
+pdecerr	(","({digs}?))*
 pexp	("e"(({sig})?){digs})?
+ndecerr {pent}{pdecerr}{pexp}
 ndec	{pent}{pdec}{pexp}
 nlong	{digs}("L"|"l")
 str	    (("'")([^']*)("'"))|(("\"")([^"]*)("\""))
 comment "//".*
-err {enum}
+errorsimbolos [[:punct:]]
+err {enum}|{errorsimbolos}|{ndecerr}
 
 %{   
 /* importación de librerias , metodos y variables globales*/
@@ -119,7 +123,7 @@ void show_lines(char type[], char value[]) {
   if(type!="COMENTARIO"){
       if(type[0] == c && type[1]==d || type=="STRING"){
           fprintf(yyout, " %s=%s , ", type, yytext);
-      } else if (type=="Punto-coma" || type=="Llave-c"){
+      } else if (type=="Punto-coma" || type=="Llave-c" || type=="Llave-a"){
           fprintf(yyout, " %s=%s ", type, yytext);
       } else  {
           fprintf(yyout, " %s=%s , ", type, yytext);
