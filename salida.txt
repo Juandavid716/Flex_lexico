@@ -1,5 +1,6 @@
  PUBLIC  CLASS   Id=AnyThing ,  Llave-a={ 
  PUBLIC  STATIC  VOID   Id=main ,   Parent-a=( , STRING  Corchete-a=[ ,  Corchete-c=] ,   Id=args ,  Parent-c=) ,  Llave-a={ 
+     COMENTARIO=//HOLA , 
  INT   Id=i ,  Op-asig== ,  Cte-ent=1 ,  Punto-coma=; 
  INT   Id=j ,  Op-asig== ,  Cte-ent=20 ,  Punto-coma=; 
  CHAR   Id=c ,  Punto-coma=; 
@@ -7,17 +8,21 @@
  DOUBLE   Id=z ,  Punto-coma=; 
   Id=z ,  Op-asig== ,  Cte-real=14.9e-8 ,  Punto-coma=; 
   Id=z ,  Op-asig== ,  Cte-real=12.9 ,  Punto-coma=; 
-  Id=cadena ,  Op-asig== ,  Cte-cadena="Hola" ,  Punto-coma=; 
+  Id=cadena ,  Op-asig== ,  Cte-cadena="Hola" ,  Punto-coma=;  Op-sum=+ , 
+  Id=$$hola ,   Op-asig== ,   Cte-cadena="eh" , 
+  Id=hola ,  ERROR=@ ,  Id=xd , 
   Id=c ,  Op-asig== ,  Cte-cadena="a" ,  Punto-coma=; 
   Id=i ,  Op-asig== ,  Id=i ,  Op-mult=* ,  Cte-ent=2 ,  Punto-coma=; 
  FOR   Parent-a=( , INT   Id=k ,   Op-asig== ,   Cte-ent=1 ,  Punto-coma=;   Id=k ,   Op-Menor=< ,   Id=j ,  Punto-coma=;   Id=k ,  Op-MasMas=++ ,  Parent-c=) ,  Llave-a={ 
      Id=i ,  Op-PorAsig=*= ,  Id=k ,  Punto-coma=; 
      Id=z ,  Op-DivAsig=/= ,  Cte-real=2.0 ,  Punto-coma=; 
   Llave-c=} 
+  Id=hola$hola , 
+  Id=zxd ,  ERROR=@ ,  Id=xd , 
  Llave-c=} 
  Llave-c=} 
 
-Hay 9 identificadores:
-Id=AnyThing; Id=main; Id=args; Id=i; Id=j; Id=c; Id=cadena; Id=z; Id=k; 
+Hay 14 identificadores:
+Id=AnyThing; Id=main; Id=args; Id=i; Id=j; Id=c; Id=cadena; Id=z; Id=$$hola; Id=hola; Id=xd; Id=k; Id=hola$hola; Id=zxd; 
 
-Se encontraron 0 errores
+Se encontraron 2 errores

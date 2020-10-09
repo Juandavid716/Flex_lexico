@@ -4,7 +4,10 @@ tokens	if|else|for|while|double|int|String|new|public|class|static|void|char
 letra	[A-Za-z]
 dig	[0-9]
 digs	{dig}+
-variable 	({letra}({letra}|{dig})*)
+gbajo ("_")
+speso ("$")
+variable 	(({gbajo}|{speso})*{letra}({letra}|{dig}|{speso}|{gbajo})*)
+
 id {variable}
 enum ({digs}({letra})+)
 sig	("-")
@@ -18,7 +21,8 @@ ndec	{pent}{pdec}{pexp}
 nlong	{digs}("L"|"l")
 str	    (("'")([^']*)("'"))|(("\"")([^"]*)("\""))
 comment "//".*
-errorsimbolos [[:punct:]]
+errorsimbolos [!"\#$%&'()*+,\-./:;<=>?@\[\\\]^_‘{|}~]
+errorsimb [!"\#%&'()*+,\-./:;<=>?@\[\\\]^‘{|}~]
 err {enum}|{errorsimbolos}|{ndecerr}
 
 %{   
@@ -120,7 +124,7 @@ void identifier(char text[]) {
 
 void show_lines(char type[], char value[]) {
   char c = 'I'; char d = 'd';
-  if(type!="COMENTARIO"){
+ 
       if(type[0] == c && type[1]==d || type=="STRING"){
           fprintf(yyout, " %s=%s , ", type, yytext);
       } else if (type=="Punto-coma" || type=="Llave-c" || type=="Llave-a"){
@@ -129,7 +133,7 @@ void show_lines(char type[], char value[]) {
           fprintf(yyout, " %s=%s , ", type, yytext);
       }
   
-  }
+  
 }
 
 void convert_to_upper(char s[]) {
