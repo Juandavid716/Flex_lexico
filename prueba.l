@@ -6,8 +6,8 @@ dig	[0-9]
 digs	{dig}+
 gbajo ("_")
 speso ("$")
+var (({letra})|({letra}|{dig})*)
 variable 	(({gbajo}|{speso})*{letra}({letra}|{dig}|{speso}|{gbajo})*)
-
 id {variable}
 enum ({digs}({letra})+)
 sig	("-")
@@ -21,9 +21,9 @@ ndec	{pent}{pdec}{pexp}
 nlong	{digs}("L"|"l")
 str	    (("'")([^']*)("'"))|(("\"")([^"]*)("\""))
 comment "//".*
-errorsimbolos [!"\#$%&'()*+,\-./:;<=>?@\[\\\]^_‘{|}~]
-errorsimb [!"\#%&'()*+,\-./:;<=>?@\[\\\]^‘{|}~]
-err {enum}|{errorsimbolos}|{ndecerr}
+errorsimbolos [!"\#$%&'()*+\-./:;<=>?@\[\\\]^_‘{|}~]
+variableerrada ([A-Za-z])+(["\#&'\:?@\\\\^‘|~])+([A-Za-z])+
+err {enum}|{errorsimbolos}|{ndecerr}|{variableerrada}
 
 %{   
 /* importación de librerias , metodos y variables globales*/
@@ -74,6 +74,7 @@ err {enum}|{errorsimbolos}|{ndecerr}
 "{"               {show_lines("Llave-a", yytext);}
 "}"               {show_lines("Llave-c", yytext);}
 "!"               {show_lines("Op-no", yytext);}
+","             {show_lines("coma", yytext);}
 
 {id}	{identifier(yytext);}
 {nent}	{show_lines("Cte-ent", yytext);}
@@ -147,11 +148,17 @@ void convert_to_upper(char s[]) {
 }
 
 void show_ids() {
+   fprintf(yyout, "TABLA DE IDENTIFICADORES\n");
   if(num_ids == 0) {
     fprintf(yyout, "No se detectaron identificadores\n");
   }
   else {
-    fprintf(yyout, "Hay %d identificadores:\n", num_ids);
+    if(num_ids==1){
+      fprintf(yyout, "Hay %d identificador:\n", num_ids);
+    } else {
+        fprintf(yyout, "Hay %d identificadores:\n", num_ids);
+    }
+
     for(int i = 0; i < num_ids; i++) {
       fprintf(yyout, "Id=%s; ", ids[i]);
     }
