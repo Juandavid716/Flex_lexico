@@ -1,6 +1,7 @@
 /* Declaración palabras claves*/
 tokens	if|else|for|while|double|int|String|new|public|class|static|void|char
 
+/* Expresiones regulares*/
 letra	[A-Za-z]
 dig	[0-9]
 digs	{dig}+
@@ -8,65 +9,79 @@ gbajo ("_")
 speso ("$")
 var (({letra})|({letra}|{dig})*)
 variable 	(({gbajo}|{speso})*{letra}({letra}|{dig}|{speso}|{gbajo})*)
-id {variable}
-enum ({digs}({letra})+)
-sig	("-")
 nent	{sig}?{digs}
 pent	{digs}?
 pdec	("."({digs}?))?
-pdecerr	(","({digs}?))*
 pexp	("e"(({sig})?){digs})?
-ndecerr {pent}{pdecerr}{pexp}
 ndec	{pent}{pdec}{pexp}
 nlong	{digs}("L"|"l")
-str	    (("'")([^']*)("'"))|(("\"")([^"]*)("\""))
+cadena	    (("'")([^']*)("'"))|(("\"")([^"]*)("\""))
+sig	("-")
+
+/* identificadores */
+id {variable}
+
+/* Comentarios */
 comment "//".*
+
+/* Manejo de errores */
+pdecerr	(","({digs}?))*
+ndecerr {pent}{pdecerr}{pexp}
+enum ({digs}({letra})+)
 errorsimbolos [!"\#$%&'()*+\-./:;<=>?@\[\\\]^_‘{|}~]
 variableerrada ([A-Za-z])+(["\#&'\:?@\\\\^‘|~])+([A-Za-z])+
 err {enum}|{errorsimbolos}|{ndecerr}|{variableerrada}
 
 %{   
 /* importación de librerias , metodos y variables globales*/
+
+  /* Librerías */
   #include <stdio.h>
   #include <string.h>
   #include <stdbool.h>
-  #include <ctype.h> 
+  #include <ctype.h>
+
+  /* Métodos */
   void convert_to_upper();
   void print_tokens();
   void show_lines();
   void identifier();
   void show_ids();
+
+  /* Variables globales */
   int num_ids=0; int x=0;
   int num_errores = 0;
-  char ids[9999][9999];
-  char buffer[100];
+  char ids[999][999];
+  char buffer[999];
+  char c = 'I'; 
+  char d = 'd';
 %}
 
 %%
 
-{tokens}	      {print_tokens(yytext);}
+
 "+"               {show_lines("Op-sum", yytext);}
 "-"               {show_lines("Op-sust", yytext);}
 "*"               {show_lines("Op-mult", yytext);}
 "/"               {show_lines("Op-div", yytext);}
 "%"               {show_lines("Op-mod", yytext);}
-"&&"               {show_lines("Op-y", yytext);}
-"="			      {show_lines("Op-asig", yytext);}
-"||"               {show_lines("Op-o", yytext);}
-">"				  {show_lines("Op-Mayor", yytext);}
-"<"		          {show_lines("Op-Menor", yytext);}
-"<="	          {show_lines("Op-Menor-igual", yytext);}
-">="		      {show_lines("Op-Mayor-igual", yytext);}
-"<>"               {show_lines("Op-Diferente", yytext);}
-"!="	       	  {show_lines("Op-Diferente", yytext);}
-"=="			  {show_lines("Op-Igual", yytext);}
-"("			      {show_lines("Parent-a", yytext);}
-")"			      {show_lines("Parent-c", yytext);}
-";"			      {show_lines("Punto-coma", yytext);}
-"["			      {show_lines("Corchete-a", yytext);}
-"]"			      {show_lines("Corchete-c", yytext);}
+"&&"              {show_lines("Op-y", yytext);}
+"="			          {show_lines("Op-asig", yytext);}
+"||"              {show_lines("Op-o", yytext);}
+">"				        {show_lines("Op-Mayor", yytext);}
+"<"		            {show_lines("Op-Menor", yytext);}
+"<="	            {show_lines("Op-Menor-igual", yytext);}
+">="		          {show_lines("Op-Mayor-igual", yytext);}
+"<>"              {show_lines("Op-Diferente", yytext);}
+"!="	       	    {show_lines("Op-Diferente", yytext);}
+"=="			        {show_lines("Op-Igual", yytext);}
+"("			          {show_lines("Parent-a", yytext);}
+")"			          {show_lines("Parent-c", yytext);}
+";"			          {show_lines("Punto-coma", yytext);}
+"["			          {show_lines("Corchete-a", yytext);}
+"]"			          {show_lines("Corchete-c", yytext);}
 "*="              {show_lines("Op-PorAsig", yytext);}
-"/="			  {show_lines("Op-DivAsig", yytext);}
+"/="			        {show_lines("Op-DivAsig", yytext);}
 "-="              {show_lines("Op-SustAsig", yytext);}
 "+="              {show_lines("Op-MasAsig", yytext);}
 "++"              {show_lines("Op-MasMas", yytext);}
@@ -74,19 +89,21 @@ err {enum}|{errorsimbolos}|{ndecerr}|{variableerrada}
 "{"               {show_lines("Llave-a", yytext);}
 "}"               {show_lines("Llave-c", yytext);}
 "!"               {show_lines("Op-no", yytext);}
-","             {show_lines("coma", yytext);}
+","               {show_lines("coma", yytext);}
 
-{id}	{identifier(yytext);}
-{nent}	{show_lines("Cte-ent", yytext);}
-{ndec}	{show_lines("Cte-real", yytext);}
-{nlong}	{show_lines("Cte-long", yytext);}
-{str}	{show_lines("Cte-cadena", yytext);}
+{tokens}	        {print_tokens(yytext);}
+{id}	            {identifier(yytext);}
+{nent}	          {show_lines("Cte-ent", yytext);}
+{ndec}	          {show_lines("Cte-real", yytext);}
+{nlong}	          {show_lines("Cte-long", yytext);}
+{cadena}	        {show_lines("Cte-cadena", yytext);}
 {comment}         {show_lines("COMENTARIO", yytext);}
-{err}         {show_lines("ERROR", yytext);num_errores++;}
+{err}             {show_lines("ERROR", yytext);num_errores++;}
 
 
 %%
 
+/* Método principal */
 int main(int argc, char *argv[])
 {
     yyin = fopen("texto.java", "r");
@@ -101,11 +118,13 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+/* Impresión de palabras claves */
 void print_tokens(char keyword[]) {
   convert_to_upper(keyword);
   fprintf(yyout, "%s ", keyword);
 }
 
+/* Reconocimiento y conteo de identificadores*/
 void identifier(char text[]) {
   bool new_id = true;
 	for(int i = 0; i < num_ids; i++){
@@ -123,8 +142,9 @@ void identifier(char text[]) {
   show_lines(buffer,text);
 }
 
+/* Imprimir identificadores y variables */
 void show_lines(char type[], char value[]) {
-  char c = 'I'; char d = 'd';
+ 
  
       if(type[0] == c && type[1]==d || type=="STRING"){
           fprintf(yyout, " %s=%s , ", type, yytext);
@@ -137,6 +157,7 @@ void show_lines(char type[], char value[]) {
   
 }
 
+/* Conversión a mayuscula */
 void convert_to_upper(char s[]) {
    int c = 0;
    while (s[c] != '\0') {
@@ -147,6 +168,7 @@ void convert_to_upper(char s[]) {
    }
 }
 
+/* Tabla de identificadores */
 void show_ids() {
    fprintf(yyout, "TABLA DE IDENTIFICADORES\n");
   if(num_ids == 0) {
