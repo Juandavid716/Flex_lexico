@@ -9,7 +9,6 @@ public class AnyThing{
    z=12.9;
    cadena="Hola";
    c="a";
-   $
    i=i*2;
    for (int k = 1; k < j; k++){
       i*=k;
