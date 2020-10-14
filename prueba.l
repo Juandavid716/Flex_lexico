@@ -47,12 +47,14 @@ err {enum}|{errorsimbolos}|{ndecerr}|{variableerrada}
   void show_lines();
   void identifier();
   void show_ids();
-
+  void identifierError();
+  void show_errores();
   /* Variables globales */
-  int num_ids=0; int x=0;
+  int num_ids=0; int x=0; int num_errores; int y = 0;
   int num_errores = 0;
   char ids[999][999];
-  char buffer[999];
+  char errores[999][999];
+  char buffer[999]; char bufferErrores[999];
   char c = 'I'; 
   char d = 'd';
 %}
@@ -98,7 +100,7 @@ err {enum}|{errorsimbolos}|{ndecerr}|{variableerrada}
 {nlong}	          {show_lines("Cte-long", yytext);}
 {cadena}	        {show_lines("Cte-cadena", yytext);}
 {comment}         {show_lines("COMENTARIO", yytext);}
-{err}             {show_lines("ERROR", yytext);num_errores++;}
+{err}             {identifierError(yytext);}
 
 
 %%
@@ -114,7 +116,8 @@ int main(int argc, char *argv[])
     fprintf(yyout, "\n");
     show_ids();
     fprintf(yyout, "\n");
-    fprintf(yyout, "Se encontraron %d errores\n", num_errores);
+    show_errores();
+    
     return 0;
 }
 
@@ -140,6 +143,23 @@ void identifier(char text[]) {
   }
   sprintf(buffer, "Id", x);
   show_lines(buffer,text);
+}
+
+void identifierError(char text[]) {
+  bool new_error = true;
+	for(int i = 0; i < num_errores; i++){
+		if(strcmp(text, errores[i]) == 0) {
+			new_error = false;
+            y = i;
+		}
+	}
+  if (new_error){
+    strcpy(errores[num_errores], text);
+    y = num_errores;
+    num_errores++;
+  }
+  sprintf(bufferErrores, "ERROR=", x);
+  show_lines(bufferErrores,text);
 }
 
 /* Imprimir identificadores y variables */
@@ -183,6 +203,25 @@ void show_ids() {
 
     for(int i = 0; i < num_ids; i++) {
       fprintf(yyout, "Id=%s; ", ids[i]);
+    }
+     fprintf(yyout, "\n");
+	}
+}
+
+void  show_errores(){
+    fprintf(yyout, "TABLA DE ERRORES\n");
+  if(num_errores == 0) {
+    fprintf(yyout, "No se detectaron errores\n");
+  }
+  else {
+    if(num_errores==1){
+      fprintf(yyout, "Hay %d error:\n", num_errores);
+    } else {
+        fprintf(yyout, "Hay %d errores:\n", num_errores);
+    }
+
+    for(int i = 0; i < num_errores; i++) {
+      fprintf(yyout, "ERROR=%s; ", errores[i]);
     }
      fprintf(yyout, "\n");
 	}

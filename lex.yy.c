@@ -489,15 +489,17 @@ char *yytext;
   void show_lines();
   void identifier();
   void show_ids();
-
+  void identifierError();
+  void show_errores();
   /* Variables globales */
-  int num_ids=0; int x=0;
+  int num_ids=0; int x=0; int num_errores; int y = 0;
   int num_errores = 0;
   char ids[999][999];
-  char buffer[999];
+  char errores[999][999];
+  char buffer[999]; char bufferErrores[999];
   char c = 'I'; 
   char d = 'd';
-#line 501 "lex.yy.c"
+#line 503 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -648,11 +650,11 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 60 "prueba.l"
+#line 62 "prueba.l"
 
 
 
-#line 656 "lex.yy.c"
+#line 658 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -737,200 +739,200 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 63 "prueba.l"
+#line 65 "prueba.l"
 {show_lines("Op-sum", yytext);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 64 "prueba.l"
+#line 66 "prueba.l"
 {show_lines("Op-sust", yytext);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 65 "prueba.l"
+#line 67 "prueba.l"
 {show_lines("Op-mult", yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 66 "prueba.l"
+#line 68 "prueba.l"
 {show_lines("Op-div", yytext);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 67 "prueba.l"
+#line 69 "prueba.l"
 {show_lines("Op-mod", yytext);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 68 "prueba.l"
+#line 70 "prueba.l"
 {show_lines("Op-y", yytext);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 69 "prueba.l"
+#line 71 "prueba.l"
 {show_lines("Op-asig", yytext);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 70 "prueba.l"
+#line 72 "prueba.l"
 {show_lines("Op-o", yytext);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 71 "prueba.l"
+#line 73 "prueba.l"
 {show_lines("Op-Mayor", yytext);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 72 "prueba.l"
+#line 74 "prueba.l"
 {show_lines("Op-Menor", yytext);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 73 "prueba.l"
+#line 75 "prueba.l"
 {show_lines("Op-Menor-igual", yytext);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 74 "prueba.l"
+#line 76 "prueba.l"
 {show_lines("Op-Mayor-igual", yytext);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 75 "prueba.l"
+#line 77 "prueba.l"
 {show_lines("Op-Diferente", yytext);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 76 "prueba.l"
+#line 78 "prueba.l"
 {show_lines("Op-Diferente", yytext);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 77 "prueba.l"
+#line 79 "prueba.l"
 {show_lines("Op-Igual", yytext);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 78 "prueba.l"
+#line 80 "prueba.l"
 {show_lines("Parent-a", yytext);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 79 "prueba.l"
+#line 81 "prueba.l"
 {show_lines("Parent-c", yytext);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 80 "prueba.l"
+#line 82 "prueba.l"
 {show_lines("Punto-coma", yytext);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 81 "prueba.l"
+#line 83 "prueba.l"
 {show_lines("Corchete-a", yytext);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 82 "prueba.l"
+#line 84 "prueba.l"
 {show_lines("Corchete-c", yytext);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 83 "prueba.l"
+#line 85 "prueba.l"
 {show_lines("Op-PorAsig", yytext);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 84 "prueba.l"
+#line 86 "prueba.l"
 {show_lines("Op-DivAsig", yytext);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 85 "prueba.l"
+#line 87 "prueba.l"
 {show_lines("Op-SustAsig", yytext);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 86 "prueba.l"
+#line 88 "prueba.l"
 {show_lines("Op-MasAsig", yytext);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 87 "prueba.l"
+#line 89 "prueba.l"
 {show_lines("Op-MasMas", yytext);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 88 "prueba.l"
+#line 90 "prueba.l"
 {show_lines("Op-SustSust", yytext);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 89 "prueba.l"
+#line 91 "prueba.l"
 {show_lines("Llave-a", yytext);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 90 "prueba.l"
+#line 92 "prueba.l"
 {show_lines("Llave-c", yytext);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 91 "prueba.l"
+#line 93 "prueba.l"
 {show_lines("Op-no", yytext);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 92 "prueba.l"
+#line 94 "prueba.l"
 {show_lines("coma", yytext);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 94 "prueba.l"
+#line 96 "prueba.l"
 {print_tokens(yytext);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 95 "prueba.l"
+#line 97 "prueba.l"
 {identifier(yytext);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 96 "prueba.l"
+#line 98 "prueba.l"
 {show_lines("Cte-ent", yytext);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 97 "prueba.l"
+#line 99 "prueba.l"
 {show_lines("Cte-real", yytext);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 98 "prueba.l"
+#line 100 "prueba.l"
 {show_lines("Cte-long", yytext);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 99 "prueba.l"
+#line 101 "prueba.l"
 {show_lines("Cte-cadena", yytext);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 100 "prueba.l"
+#line 102 "prueba.l"
 {show_lines("COMENTARIO", yytext);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 101 "prueba.l"
-{show_lines("ERROR", yytext);num_errores++;}
+#line 103 "prueba.l"
+{identifierError(yytext);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 104 "prueba.l"
+#line 106 "prueba.l"
 ECHO;
 	YY_BREAK
-#line 934 "lex.yy.c"
+#line 936 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1816,7 +1818,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 104 "prueba.l"
+#line 106 "prueba.l"
 
 
 /* Método principal */
@@ -1830,7 +1832,8 @@ int main(int argc, char *argv[])
     fprintf(yyout, "\n");
     show_ids();
     fprintf(yyout, "\n");
-    fprintf(yyout, "Se encontraron %d errores\n", num_errores);
+    show_errores();
+    
     return 0;
 }
 
@@ -1856,6 +1859,23 @@ void identifier(char text[]) {
   }
   sprintf(buffer, "Id", x);
   show_lines(buffer,text);
+}
+
+void identifierError(char text[]) {
+  bool new_error = true;
+	for(int i = 0; i < num_errores; i++){
+		if(strcmp(text, errores[i]) == 0) {
+			new_error = false;
+            y = i;
+		}
+	}
+  if (new_error){
+    strcpy(errores[num_errores], text);
+    y = num_errores;
+    num_errores++;
+  }
+  sprintf(bufferErrores, "ERROR=", x);
+  show_lines(bufferErrores,text);
 }
 
 /* Imprimir identificadores y variables */
@@ -1899,6 +1919,25 @@ void show_ids() {
 
     for(int i = 0; i < num_ids; i++) {
       fprintf(yyout, "Id=%s; ", ids[i]);
+    }
+     fprintf(yyout, "\n");
+	}
+}
+
+void  show_errores(){
+    fprintf(yyout, "TABLA DE ERRORES\n");
+  if(num_errores == 0) {
+    fprintf(yyout, "No se detectaron errores\n");
+  }
+  else {
+    if(num_errores==1){
+      fprintf(yyout, "Hay %d error:\n", num_errores);
+    } else {
+        fprintf(yyout, "Hay %d errores:\n", num_errores);
+    }
+
+    for(int i = 0; i < num_errores; i++) {
+      fprintf(yyout, "ERROR=%s; ", errores[i]);
     }
      fprintf(yyout, "\n");
 	}
