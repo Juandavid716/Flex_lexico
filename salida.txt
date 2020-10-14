@@ -9,10 +9,7 @@ PUBLIC  CLASS   Id=AnyThing ,  Llave-a={
     Id=z ,  Op-asig== ,  Cte-real=12.9 ,  Punto-coma=; 
     Id=cadena ,  Op-asig== ,  Cte-cadena="Hola" ,  Punto-coma=; 
     Id=c ,  Op-asig== ,  Cte-cadena="a" ,  Punto-coma=; 
-    ERROR==$ , 
-    ERROR==hola@xdd , 
-    ERROR==& ,  Op-mod=% ,  Cte-ent=65 , 
-    ERROR==3565d , 
+     Id=funciona , 
     Id=i ,  Op-asig== ,  Id=i ,  Op-mult=* ,  Cte-ent=2 ,  Punto-coma=; 
    FOR   Parent-a=( , INT   Id=k ,   Op-asig== ,   Cte-ent=1 ,  Punto-coma=;   Id=k ,   Op-Menor=< ,   Id=j ,  Punto-coma=;   Id=k ,  Op-MasMas=++ ,  Parent-c=) ,  Llave-a={ 
        Id=i ,  Op-PorAsig=*= ,  Id=k ,  Punto-coma=; 
@@ -22,9 +19,8 @@ PUBLIC  CLASS   Id=AnyThing ,  Llave-a={
  Llave-c=} 
 
 TABLA DE IDENTIFICADORES
-Hay 9 identificadores:
-Id=AnyThing; Id=main; Id=args; Id=i; Id=j; Id=c; Id=cadena; Id=z; Id=k; 
+Hay 10 identificadores:
+Id=AnyThing; Id=main; Id=args; Id=i; Id=j; Id=c; Id=cadena; Id=z; Id=funciona; Id=k; 
 
 TABLA DE ERRORES
-Hay 4 errores:
-ERROR=$; ERROR=hola@xdd; ERROR=&; ERROR=3565d; 
+No se detectaron errores

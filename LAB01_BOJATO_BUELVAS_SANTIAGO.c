@@ -467,14 +467,14 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "prueba.l"
+#line 1 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 #define INITIAL 0
 /* Declaración palabras claves*/
 /* Expresiones regulares*/
 /* identificadores */
 /* Comentarios */
 /* Manejo de errores */
-#line 36 "prueba.l"
+#line 36 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 /* importación de librerias , metodos y variables globales*/
 
   /* Librerías */
@@ -650,7 +650,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 62 "prueba.l"
+#line 62 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 
 
 
@@ -739,197 +739,197 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 65 "prueba.l"
+#line 65 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-sum", yytext);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 66 "prueba.l"
+#line 66 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-sust", yytext);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 67 "prueba.l"
+#line 67 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-mult", yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 68 "prueba.l"
+#line 68 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-div", yytext);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 69 "prueba.l"
+#line 69 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-mod", yytext);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 70 "prueba.l"
+#line 70 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-y", yytext);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 71 "prueba.l"
+#line 71 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-asig", yytext);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 72 "prueba.l"
+#line 72 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-o", yytext);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 73 "prueba.l"
+#line 73 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-Mayor", yytext);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 74 "prueba.l"
+#line 74 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-Menor", yytext);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 75 "prueba.l"
+#line 75 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-Menor-igual", yytext);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 76 "prueba.l"
+#line 76 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-Mayor-igual", yytext);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 77 "prueba.l"
+#line 77 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-Diferente", yytext);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 78 "prueba.l"
+#line 78 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-Diferente", yytext);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 79 "prueba.l"
+#line 79 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-Igual", yytext);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 80 "prueba.l"
+#line 80 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Parent-a", yytext);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 81 "prueba.l"
+#line 81 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Parent-c", yytext);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 82 "prueba.l"
+#line 82 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Punto-coma", yytext);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 83 "prueba.l"
+#line 83 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Corchete-a", yytext);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 84 "prueba.l"
+#line 84 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Corchete-c", yytext);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 85 "prueba.l"
+#line 85 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-PorAsig", yytext);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 86 "prueba.l"
+#line 86 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-DivAsig", yytext);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 87 "prueba.l"
+#line 87 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-SustAsig", yytext);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 88 "prueba.l"
+#line 88 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-MasAsig", yytext);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 89 "prueba.l"
+#line 89 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-MasMas", yytext);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 90 "prueba.l"
+#line 90 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-SustSust", yytext);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 91 "prueba.l"
+#line 91 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Llave-a", yytext);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 92 "prueba.l"
+#line 92 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Llave-c", yytext);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 93 "prueba.l"
+#line 93 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Op-no", yytext);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 94 "prueba.l"
+#line 94 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("coma", yytext);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 96 "prueba.l"
+#line 96 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {print_tokens(yytext);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 97 "prueba.l"
+#line 97 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {identifier(yytext);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 98 "prueba.l"
+#line 98 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Cte-ent", yytext);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 99 "prueba.l"
+#line 99 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Cte-real", yytext);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 100 "prueba.l"
+#line 100 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Cte-long", yytext);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 101 "prueba.l"
+#line 101 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("Cte-cadena", yytext);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 102 "prueba.l"
+#line 102 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {show_lines("COMENTARIO", yytext);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 103 "prueba.l"
+#line 103 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 {identifierError(yytext);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 106 "prueba.l"
+#line 106 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 ECHO;
 	YY_BREAK
 #line 936 "lex.yy.c"
@@ -1818,13 +1818,13 @@ int main()
 	return 0;
 	}
 #endif
-#line 106 "prueba.l"
+#line 106 "LAB01_BOJATO_BUELVAS_SANTIAGO.l"
 
 
 /* Método principal */
 int main(int argc, char *argv[])
 {
-    yyin = fopen("texto.java", "r");
+    yyin = fopen(argv[1], "r");
     FILE *out_file = fopen("salida.txt", "w");
     yyout = out_file;
     yylex();

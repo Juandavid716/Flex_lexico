@@ -108,7 +108,7 @@ err {enum}|{errorsimbolos}|{ndecerr}|{variableerrada}
 /* Método principal */
 int main(int argc, char *argv[])
 {
-    yyin = fopen("texto.java", "r");
+    yyin = fopen(argv[1], "r");
     FILE *out_file = fopen("salida.txt", "w");
     yyout = out_file;
     yylex();
