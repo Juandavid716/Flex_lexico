@@ -1925,11 +1925,12 @@ void show_ids() {
 }
 
 void  show_errores(){
-    fprintf(yyout, "TABLA DE ERRORES\n");
-  if(num_errores == 0) {
+    if(num_errores == 0) {
     fprintf(yyout, "No se detectaron errores\n");
   }
+
   else {
+     fprintf(yyout, "TABLA DE ERRORES\n");
     if(num_errores==1){
       fprintf(yyout, "Hay %d error:\n", num_errores);
     } else {
